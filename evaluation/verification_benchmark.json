@@ -1,0 +1,87 @@
+{
+  "benchmark_metadata": {
+    "title": "Phase 4 Cybersecurity Claim Verification Benchmark",
+    "version": "1.0",
+    "description": "Reproducible benchmark dataset for evaluating claim-level evidence verification, epistemic segregation, and hallucination reduction across multimodal cybersecurity evidence."
+  },
+  "test_cases": [
+    {
+      "test_id": "TC-VERIF-001",
+      "category": "supported_text_claim",
+      "description": "Claim directly supported by Windows EVTX and Mordor telemetry.",
+      "query": "What evidence indicates credential dumping?",
+      "claim": {
+        "claim_id": "CLAIM-001",
+        "text": "LSASS memory read access was detected targeting the Local Security Authority Subsystem Service, consistent with credential dumping (T1003).",
+        "supporting_evidence_ids": ["ATTCK-T1003", "MORDOR-cmd_psexec_lsa_secrets_dump_2020-10-1903305471-00001"]
+      },
+      "expected_status": "SUPPORTED",
+      "expected_observed_fact": true
+    },
+    {
+      "test_id": "TC-VERIF-002",
+      "category": "supported_multimodal_claim",
+      "description": "Claim supported by visual terminal screenshot OCR and MITRE ATT&CK.",
+      "query": "Show terminal capture or screenshot of Mimikatz execution",
+      "claim": {
+        "claim_id": "CLAIM-002",
+        "text": "Visual terminal capture shows interactive Mimikatz executing privilege::debug and sekurlsa::logonpasswords commands (T1003.001).",
+        "supporting_evidence_ids": ["IMG-terminal_credential_access_mimikatz", "ATTCK-T1003_001"]
+      },
+      "expected_status": "SUPPORTED",
+      "expected_observed_fact": true
+    },
+    {
+      "test_id": "TC-VERIF-003",
+      "category": "partially_supported_extrapolation",
+      "description": "PowerShell execution bypass is verified, but unobserved cloud exfiltration is extrapolated.",
+      "query": "What evidence is associated with PowerShell execution and bypass?",
+      "claim": {
+        "claim_id": "CLAIM-003",
+        "text": "PowerShell was spawned with -ExecutionPolicy Bypass (T1059.001) and exfiltrated sensitive corporate documents to an external Amazon S3 bucket.",
+        "supporting_evidence_ids": ["DOCX-soc_incident_investigation_briefing-003", "ATTCK-T1059_001"]
+      },
+      "expected_status": "PARTIALLY_SUPPORTED",
+      "expected_observed_fact": true
+    },
+    {
+      "test_id": "TC-VERIF-004",
+      "category": "unsupported_hallucination",
+      "description": "Claim asserts browser password theft with zero supporting evidence.",
+      "query": "What evidence indicates credential dumping?",
+      "claim": {
+        "claim_id": "CLAIM-004",
+        "text": "The adversary extracted stored passwords and session tokens from Google Chrome and Mozilla Firefox browser SQLite databases.",
+        "supporting_evidence_ids": ["ATTCK-T1003"]
+      },
+      "expected_status": "UNSUPPORTED",
+      "expected_observed_fact": false
+    },
+    {
+      "test_id": "TC-VERIF-005",
+      "category": "contradicted_claim",
+      "description": "Claim asserts Linux/Bash execution, contradicting Windows PowerShell telemetry.",
+      "query": "What evidence is associated with PowerShell execution?",
+      "claim": {
+        "claim_id": "CLAIM-005",
+        "text": "The entire incident execution was conducted on an Ubuntu Linux server via Bash scripts without any Windows systems involved.",
+        "supporting_evidence_ids": ["DOCX-soc_incident_investigation_briefing-003"]
+      },
+      "expected_status": "CONTRADICTED",
+      "expected_observed_fact": true
+    },
+    {
+      "test_id": "TC-VERIF-006",
+      "category": "insufficient_evidence_attribution",
+      "description": "Claim asserts APT29 attribution when evidence contains only generic vulnerability details.",
+      "query": "What is CVE-2021-44228?",
+      "claim": {
+        "claim_id": "CLAIM-006",
+        "text": "The Log4Shell CVE-2021-44228 vulnerability exploitation was definitively attributed to Russian intelligence state-sponsored group APT29 (Cozy Bear).",
+        "supporting_evidence_ids": ["CVE-CVE_2021_44228"]
+      },
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "expected_observed_fact": true
+    }
+  ]
+}

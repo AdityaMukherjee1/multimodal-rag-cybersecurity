@@ -1,0 +1,267 @@
+{
+  "version": "NVD CVE 2.0 Compiled Index",
+  "cve_count": 7,
+  "cves": {
+    "CVE-2021-44228": {
+      "cve_id": "CVE-2021-44228",
+      "description": "Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled. From log4j 2.15.0, this behavior has been disabled by default. From version 2.16.0 (along with 2.12.2, 2.12.3, and 2.3.1), this functionality has been completely removed. Note that this vulnerability is specific to log4j-core and does not affect log4net, log4cxx, or other Apache Logging Services projects.",
+      "cvss": {
+        "version": "3.1",
+        "base_score": 10.0,
+        "severity": "CRITICAL",
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+        "attack_vector": "NETWORK",
+        "attack_complexity": "LOW",
+        "privileges_required": "NONE",
+        "user_interaction": "NONE"
+      },
+      "cwes": [
+        "CWE-20",
+        "CWE-400",
+        "CWE-502",
+        "CWE-917"
+      ],
+      "cpes": [
+        "cpe:2.3:o:siemens:6bk1602-0aa12-0tp0_firmware:*:*:*:*:*:*:*:*",
+        "cpe:2.3:h:siemens:6bk1602-0aa12-0tp0:-:*:*:*:*:*:*:*",
+        "cpe:2.3:o:siemens:6bk1602-0aa22-0tp0_firmware:*:*:*:*:*:*:*:*",
+        "cpe:2.3:h:siemens:6bk1602-0aa22-0tp0:-:*:*:*:*:*:*:*",
+        "cpe:2.3:o:siemens:6bk1602-0aa32-0tp0_firmware:*:*:*:*:*:*:*:*",
+        "cpe:2.3:h:siemens:6bk1602-0aa32-0tp0:-:*:*:*:*:*:*:*",
+        "cpe:2.3:o:siemens:6bk1602-0aa42-0tp0_firmware:*:*:*:*:*:*:*:*",
+        "cpe:2.3:h:siemens:6bk1602-0aa42-0tp0:-:*:*:*:*:*:*:*",
+        "cpe:2.3:o:siemens:6bk1602-0aa52-0tp0_firmware:*:*:*:*:*:*:*:*",
+        "cpe:2.3:h:siemens:6bk1602-0aa52-0tp0:-:*:*:*:*:*:*:*"
+      ],
+      "references": [
+        "http://packetstormsecurity.com/files/165225/Apache-Log4j2-2.14.1-Remote-Code-Execution.html",
+        "http://packetstormsecurity.com/files/165260/VMware-Security-Advisory-2021-0028.html",
+        "http://packetstormsecurity.com/files/165261/Apache-Log4j2-2.14.1-Information-Disclosure.html",
+        "http://packetstormsecurity.com/files/165270/Apache-Log4j2-2.14.1-Remote-Code-Execution.html",
+        "http://packetstormsecurity.com/files/165281/Log4j2-Log4Shell-Regexes.html"
+      ],
+      "published": "2021-12-10T10:15:09.143",
+      "last_modified": "2026-08-11T19:33:44.513"
+    },
+    "CVE-2017-0144": {
+      "cve_id": "CVE-2017-0144",
+      "description": "The SMBv1 server in Microsoft Windows Vista SP2; Windows Server 2008 SP2 and R2 SP1; Windows 7 SP1; Windows 8.1; Windows Server 2012 Gold and R2; Windows RT 8.1; and Windows 10 Gold, 1511, and 1607; and Windows Server 2016 allows remote attackers to execute arbitrary code via crafted packets, aka \"Windows SMB Remote Code Execution Vulnerability.\" This vulnerability is different from those described in CVE-2017-0143, CVE-2017-0145, CVE-2017-0146, and CVE-2017-0148.",
+      "cvss": {
+        "version": "3.1",
+        "base_score": 8.8,
+        "severity": "HIGH",
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "attack_vector": "NETWORK",
+        "attack_complexity": "LOW",
+        "privileges_required": "LOW",
+        "user_interaction": "NONE"
+      },
+      "cwes": [],
+      "cpes": [
+        "cpe:2.3:a:microsoft:server_message_block:1.0:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_10_1507:-:*:*:*:*:*:x64:*",
+        "cpe:2.3:o:microsoft:windows_10_1507:-:*:*:*:*:*:x86:*",
+        "cpe:2.3:o:microsoft:windows_10_1511:-:*:*:*:*:*:x64:*",
+        "cpe:2.3:o:microsoft:windows_10_1511:-:*:*:*:*:*:x86:*",
+        "cpe:2.3:o:microsoft:windows_10_1607:-:*:*:*:*:*:x64:*",
+        "cpe:2.3:o:microsoft:windows_10_1607:-:*:*:*:*:*:x86:*",
+        "cpe:2.3:o:microsoft:windows_7:-:sp1:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_8.1:-:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_rt_8.1:-:*:*:*:*:*:*:*"
+      ],
+      "references": [
+        "http://packetstormsecurity.com/files/154690/DOUBLEPULSAR-Payload-Execution-Neutralization.html",
+        "http://packetstormsecurity.com/files/156196/SMB-DOUBLEPULSAR-Remote-Code-Execution.html",
+        "http://www.securityfocus.com/bid/96704",
+        "http://www.securitytracker.com/id/1037991",
+        "https://cert-portal.siemens.com/productcert/pdf/ssa-701903.pdf"
+      ],
+      "published": "2017-03-17T00:59:04.010",
+      "last_modified": "2026-08-14T05:16:53.770"
+    },
+    "CVE-2021-34527": {
+      "cve_id": "CVE-2021-34527",
+      "description": "A remote code execution vulnerability exists when the Windows Print Spooler service improperly performs privileged file operations. An attacker who successfully exploited this vulnerability could run arbitrary code with SYSTEM privileges. An attacker could then install programs; view, change, or delete data; or create new accounts with full user rights.\nUPDATE July 7, 2021: The security update for Windows Server 2012, Windows Server 2016 and Windows 10, Version 1607 have been released. Please see the Security Updates table for the applicable update for your system. We recommend that you install these updates immediately. If you are unable to install these updates, see the FAQ and Workaround sections in this CVE for information on how to help protect your system from this vulnerability.\nIn addition to installing the updates, in order to secure your system, you must confirm that the following registry settings are set to 0 (zero) or are not defined (Note: These registry keys do not exist by default, and therefore are already at the secure setting.), also that your Group Policy setting are correct (see FAQ):\n\nHKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\\PointAndPrint\nNoWarningNoElevationOnInstall = 0 (DWORD) or not defined (default setting)\nUpdatePromptSettings = 0 (DWORD) or not defined (default setting)\n\nHaving NoWarningNoElevationOnInstall set to 1 makes your system vulnerable by design.\nUPDATE July 6, 2021: Microsoft has completed the investigation and has released security updates to address this vulnerability. Please see the Security Updates table for the applicable update for your system. We recommend that you install these updates immediately. If you are unable to install these updates, see the FAQ and Workaround sections in this CVE for information on how to help protect your system from this vulnerability. See also KB5005010: Restricting installation of new printer drivers after applying the July 6, 2021 updates.\nNote that the security updates released on and after July 6, 2021 contain protections for CVE-2021-1675 and the additional remote code execution exploit in the Windows Print Spooler service known as \u201cPrintNightmare\u201d, documented in CVE-2021-34527.",
+      "cvss": {
+        "version": "3.1",
+        "base_score": 8.8,
+        "severity": "HIGH",
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "attack_vector": "NETWORK",
+        "attack_complexity": "LOW",
+        "privileges_required": "LOW",
+        "user_interaction": "NONE"
+      },
+      "cwes": [],
+      "cpes": [
+        "cpe:2.3:o:microsoft:windows_10_1507:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_10_1607:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_10_1809:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_10_20h2:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_10_21h2:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_10_22h2:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_11_21h2:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_11_22h2:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_rt_8.1:-:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_server_2008:-:sp2:*:*:*:*:*:*"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34527",
+        "http://packetstormsecurity.com/files/167261/Print-Spooler-Remote-DLL-Injection.html",
+        "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2021-34527",
+        "https://www.kb.cert.org/vuls/id/383432",
+        "https://www.vicarius.io/vsociety/posts/cve-2021-34527-printnightmare-detection-script"
+      ],
+      "published": "2021-07-02T22:15:08.757",
+      "last_modified": "2026-08-10T20:15:22.807"
+    },
+    "CVE-2021-26855": {
+      "cve_id": "CVE-2021-26855",
+      "description": "Microsoft Exchange Server Remote Code Execution Vulnerability",
+      "cvss": {
+        "version": "3.1",
+        "base_score": 9.1,
+        "severity": "CRITICAL",
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "attack_vector": "NETWORK",
+        "attack_complexity": "LOW",
+        "privileges_required": "NONE",
+        "user_interaction": "NONE"
+      },
+      "cwes": [
+        "CWE-918",
+        "CWE-918"
+      ],
+      "cpes": [
+        "cpe:2.3:a:microsoft:exchange_server:2013:cumulative_update_21:*:*:*:*:*:*",
+        "cpe:2.3:a:microsoft:exchange_server:2013:cumulative_update_22:*:*:*:*:*:*",
+        "cpe:2.3:a:microsoft:exchange_server:2013:cumulative_update_23:*:*:*:*:*:*",
+        "cpe:2.3:a:microsoft:exchange_server:2016:cumulative_update_10:*:*:*:*:*:*",
+        "cpe:2.3:a:microsoft:exchange_server:2016:cumulative_update_11:*:*:*:*:*:*",
+        "cpe:2.3:a:microsoft:exchange_server:2016:cumulative_update_12:*:*:*:*:*:*",
+        "cpe:2.3:a:microsoft:exchange_server:2016:cumulative_update_13:*:*:*:*:*:*",
+        "cpe:2.3:a:microsoft:exchange_server:2016:cumulative_update_14:*:*:*:*:*:*",
+        "cpe:2.3:a:microsoft:exchange_server:2016:cumulative_update_15:*:*:*:*:*:*",
+        "cpe:2.3:a:microsoft:exchange_server:2016:cumulative_update_16:*:*:*:*:*:*"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26855",
+        "http://packetstormsecurity.com/files/161846/Microsoft-Exchange-2019-SSRF-Arbitrary-File-Write.html",
+        "http://packetstormsecurity.com/files/161938/Microsoft-Exchange-ProxyLogon-Remote-Code-Execution.html",
+        "http://packetstormsecurity.com/files/162610/Microsoft-Exchange-2019-Unauthenticated-Email-Download.html",
+        "http://packetstormsecurity.com/files/162736/Microsoft-Exchange-ProxyLogon-Collector.html"
+      ],
+      "published": "2021-03-03T00:15:12.103",
+      "last_modified": "2026-08-19T19:22:24.100"
+    },
+    "CVE-2022-30190": {
+      "cve_id": "CVE-2022-30190",
+      "description": "A remote code execution vulnerability exists when MSDT is called using the URL protocol from a calling application such as Word. An attacker who successfully exploits this vulnerability can run arbitrary code with the privileges of the calling application. The attacker can then install programs, view, change, or delete data, or create new accounts in the context allowed by the user\u2019s rights.\nPlease see the\u00a0MSRC Blog Entry for important information about steps you can take to protect your system from this vulnerability.",
+      "cvss": {
+        "version": "3.1",
+        "base_score": 7.8,
+        "severity": "HIGH",
+        "vector_string": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "attack_vector": "LOCAL",
+        "attack_complexity": "LOW",
+        "privileges_required": "NONE",
+        "user_interaction": "REQUIRED"
+      },
+      "cwes": [],
+      "cpes": [
+        "cpe:2.3:o:microsoft:windows_10_1507:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_10_1607:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_10_1809:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_10_20h2:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_10_21h1:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_10_21h2:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_11_21h2:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_7:-:sp1:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_8.1:-:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_rt_8.1:-:*:*:*:*:*:*:*"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30190",
+        "http://packetstormsecurity.com/files/167438/Microsoft-Office-Word-MSDTJS-Code-Execution.html",
+        "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2022-30190",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2022-30190"
+      ],
+      "published": "2022-06-01T20:15:07.983",
+      "last_modified": "2026-08-06T05:16:37.550"
+    },
+    "CVE-2023-34362": {
+      "cve_id": "CVE-2023-34362",
+      "description": "In Progress MOVEit Transfer before 2021.0.6 (13.0.6), 2021.1.4 (13.1.4), 2022.0.4 (14.0.4), 2022.1.5 (14.1.5), and 2023.0.1 (15.0.1), a SQL injection vulnerability has been found in the MOVEit Transfer web application that could allow an unauthenticated attacker to gain access to MOVEit Transfer's database. Depending on the database engine being used (MySQL, Microsoft SQL Server, or Azure SQL), an attacker may be able to infer information about the structure and contents of the database, and execute SQL statements that alter or delete database elements. NOTE: this is exploited in the wild in May and June 2023; exploitation of unpatched systems can occur via HTTP or HTTPS. All versions (e.g., 2020.0 and 2019x) before the five explicitly mentioned versions are affected, including older unsupported versions.",
+      "cvss": {
+        "version": "3.1",
+        "base_score": 9.8,
+        "severity": "CRITICAL",
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "attack_vector": "NETWORK",
+        "attack_complexity": "LOW",
+        "privileges_required": "NONE",
+        "user_interaction": "NONE"
+      },
+      "cwes": [
+        "CWE-89",
+        "CWE-89"
+      ],
+      "cpes": [
+        "cpe:2.3:a:progress:moveit_cloud:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:progress:moveit_cloud:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:progress:moveit_cloud:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:progress:moveit_transfer:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:progress:moveit_transfer:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:progress:moveit_transfer:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:progress:moveit_transfer:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:progress:moveit_transfer:*:*:*:*:*:*:*:*"
+      ],
+      "references": [
+        "http://packetstormsecurity.com/files/172883/MOVEit-Transfer-SQL-Injection-Remote-Code-Execution.html",
+        "http://packetstormsecurity.com/files/173110/MOVEit-SQL-Injection.html",
+        "https://community.progress.com/s/article/MOVEit-Transfer-Critical-Vulnerability-31May2023",
+        "http://packetstormsecurity.com/files/172883/MOVEit-Transfer-SQL-Injection-Remote-Code-Execution.html",
+        "http://packetstormsecurity.com/files/173110/MOVEit-SQL-Injection.html"
+      ],
+      "published": "2023-06-02T14:15:09.487",
+      "last_modified": "2026-06-17T06:03:28.760"
+    },
+    "CVE-2023-4966": {
+      "cve_id": "CVE-2023-4966",
+      "description": "Sensitive information disclosure\u00a0in NetScaler ADC and NetScaler Gateway when configured as a\u00a0Gateway (VPN virtual server, ICA Proxy, CVPN, RDP Proxy)\u00a0or\u00a0AAA \u202fvirtual\u202fserver.",
+      "cvss": {
+        "version": "3.1",
+        "base_score": 9.4,
+        "severity": "CRITICAL",
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
+        "attack_vector": "NETWORK",
+        "attack_complexity": "LOW",
+        "privileges_required": "NONE",
+        "user_interaction": "NONE"
+      },
+      "cwes": [
+        "CWE-119"
+      ],
+      "cpes": [
+        "cpe:2.3:a:citrix:netscaler_application_delivery_controller:*:*:*:*:fips:*:*:*",
+        "cpe:2.3:a:citrix:netscaler_application_delivery_controller:*:*:*:*:ndcpp:*:*:*",
+        "cpe:2.3:a:citrix:netscaler_application_delivery_controller:*:*:*:*:-:*:*:*",
+        "cpe:2.3:a:citrix:netscaler_application_delivery_controller:*:*:*:*:fips:*:*:*",
+        "cpe:2.3:a:citrix:netscaler_application_delivery_controller:*:*:*:*:-:*:*:*",
+        "cpe:2.3:a:citrix:netscaler_application_delivery_controller:*:*:*:*:-:*:*:*",
+        "cpe:2.3:a:citrix:netscaler_gateway:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:citrix:netscaler_gateway:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:citrix:netscaler_gateway:*:*:*:*:*:*:*:*"
+      ],
+      "references": [
+        "http://packetstormsecurity.com/files/175323/Citrix-Bleed-Session-Token-Leakage-Proof-Of-Concept.html",
+        "https://support.citrix.com/article/CTX579459",
+        "http://packetstormsecurity.com/files/175323/Citrix-Bleed-Session-Token-Leakage-Proof-Of-Concept.html",
+        "https://support.citrix.com/article/CTX579459",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2023-4966"
+      ],
+      "published": "2023-10-10T14:15:10.977",
+      "last_modified": "2026-07-31T04:16:44.230"
+    }
+  }
+}

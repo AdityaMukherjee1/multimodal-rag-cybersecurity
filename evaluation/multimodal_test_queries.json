@@ -1,0 +1,87 @@
+{
+  "benchmark_metadata": {
+    "title": "Multimodal Cybersecurity Incident Investigation Query Benchmark",
+    "version": "1.0",
+    "phase": "Phase 3 Evaluation Preparation",
+    "description": "Reproducible benchmark query set covering text-only, visual-only, and cross-modal cybersecurity incident investigation tasks."
+  },
+  "queries": [
+    {
+      "query_id": "MM-Q01",
+      "category": "cross_modal_investigation",
+      "query": "What evidence demonstrates unauthorized PowerShell execution policy bypass during the incident?",
+      "description": "Requires cross-referencing host telemetry (EVTX/Mordor), SOC briefing report (DOCX), and visual SIEM alert screenshot.",
+      "expected_modalities": ["evtx", "json", "docx", "image_screenshot"],
+      "ground_truth_evidence_ids": [
+        "IMG-siem_alert_powershell_execution",
+        "ATTCK-T1059_001",
+        "DOCX-soc_incident_investigation_briefing-003",
+        "DOCX-TBL-soc_incident_investigation_briefing-001"
+      ]
+    },
+    {
+      "query_id": "MM-Q02",
+      "category": "visual_forensic_evidence",
+      "query": "Show terminal console captures and visual proof of Mimikatz logonpasswords execution.",
+      "description": "Targets visual terminal capture screenshot showing interactive Mimikatz session and sekurlsa dump.",
+      "expected_modalities": ["image_screenshot"],
+      "ground_truth_evidence_ids": [
+        "IMG-terminal_credential_access_mimikatz",
+        "ATTCK-T1003_001"
+      ]
+    },
+    {
+      "query_id": "MM-Q03",
+      "category": "visual_threat_intelligence",
+      "query": "What does the visual attack flow diagram show regarding lateral movement and C2 beaconing?",
+      "description": "Targets the architecture diagram showing multi-stage attack kill-chain progression.",
+      "expected_modalities": ["image_diagram"],
+      "ground_truth_evidence_ids": [
+        "IMG-incident_attack_flow_diagram"
+      ]
+    },
+    {
+      "query_id": "MM-Q04",
+      "category": "visual_table_ioc",
+      "query": "What critical severity indicators of compromise are listed in the threat intelligence IOC table?",
+      "description": "Targets the visual IOC matrix image table containing confirmed indicators and ATT&CK IDs.",
+      "expected_modalities": ["image_table", "docx"],
+      "ground_truth_evidence_ids": [
+        "IMG-visual_threat_intel_ioc_table",
+        "DOCX-TBL-soc_incident_investigation_briefing-001"
+      ]
+    },
+    {
+      "query_id": "MM-Q05",
+      "category": "text_vulnerability_knowledge",
+      "query": "What is the CVSS base score and CWE classification for Log4Shell CVE-2021-44228?",
+      "description": "Queries authoritative NVD vulnerability knowledge base.",
+      "expected_modalities": ["nvd_cve"],
+      "ground_truth_evidence_ids": [
+        "CVE-CVE_2021_44228"
+      ]
+    },
+    {
+      "query_id": "MM-Q06",
+      "category": "text_network_intrusion",
+      "query": "What network flow statistics and packet rates indicate Denial of Service (DoS) traffic?",
+      "description": "Queries CIC-IDS2017 flow telemetry dataset.",
+      "expected_modalities": ["network_flow"],
+      "ground_truth_evidence_ids": [
+        "NET-cicids2017_representative_sample-00203"
+      ]
+    },
+    {
+      "query_id": "MM-Q07",
+      "category": "cross_modal_credential_access",
+      "query": "What techniques and tools were used for credential dumping and LSASS memory access?",
+      "description": "Retrieves MITRE T1003, Mordor PsExec secrets dump logs, and Mimikatz terminal screenshot.",
+      "expected_modalities": ["mitre_attack", "json", "image_screenshot"],
+      "ground_truth_evidence_ids": [
+        "ATTCK-T1003_001",
+        "IMG-terminal_credential_access_mimikatz",
+        "MORDOR-cmd_psexec_lsa_secrets_dump_2020-10-1903305471-00010"
+      ]
+    }
+  ]
+}

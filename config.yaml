@@ -1,0 +1,37 @@
+# ============================================================
+# CyberAI-Investigator Default Configuration
+# ============================================================
+# These values are defaults. Environment variables in .env
+# override these settings.
+# ============================================================
+
+# Embedding model configuration
+embedding:
+  model_name: "BAAI/bge-small-en-v1.5"
+  dimension: 384
+
+# Text chunking configuration
+chunking:
+  chunk_size: 512
+  chunk_overlap: 50
+
+# Retrieval configuration
+retrieval:
+  top_k: 5
+
+# LLM configuration
+llm:
+  provider: "placeholder"
+  model_name: ""
+  api_key: ""
+  temperature: 0.1
+  max_tokens: 1024
+
+# File paths
+paths:
+  data_dir: "data"
+  faiss_index_path: "data/processed/faiss_index"
+
+# Logging
+logging:
+  level: "INFO"

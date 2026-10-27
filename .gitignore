@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data - raw user data (not sample)
+data/raw/
+
+# FAISS indices (generated)
+data/processed/faiss_index/
+data/processed/*faiss_index/
+data/processed/*.index
+data/processed/*.faiss
+data/processed/**/*.faiss
+data/processed/*.pkl
+data/processed/**/*.pkl
+
+# Temporary and uploaded files
+data/uploads/*
+!data/uploads/.gitkeep
+scratch_*.py
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+logs/
+
+# Coverage
+htmlcov/
+.coverage
+.pytest_cache/

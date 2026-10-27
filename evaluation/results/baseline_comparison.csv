@@ -1,0 +1,5 @@
+Configuration,N,Recall@1,Recall@3,Recall@5,MRR,Answer_Acc,Citation_Acc,Grounding_Score,Hallucination_Rate,Ret_Latency_ms,LLM_Latency_ms,Verif_Latency_ms,Total_Latency_ms
+A_LLM_Only,24,0.0000,0.0000,0.0000,0.0000,0.5464,0.0000,0.0000,1.0000,0.0,0.0,0.0,0.1
+B_Text_RAG,24,0.4861,0.5833,0.6042,0.6354,0.5923,0.9583,0.5000,0.3500,680.7,0.1,0.0,680.9
+C_Multimodal_RAG,24,0.4861,0.5833,0.6042,0.6354,0.5923,0.9583,0.6500,0.2500,623.8,0.1,0.0,624.0
+D_Full_System,24,0.4861,0.5833,0.6042,0.6354,0.6065,0.9583,0.3167,0.2500,26.1,0.1,0.5,27.0

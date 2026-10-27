@@ -1,0 +1,511 @@
+{
+  "benchmark_metadata": {
+    "title": "Phase 5 Empirical Cybersecurity Evaluation Benchmark",
+    "version": "1.0",
+    "total_queries": 24,
+    "description": "Standardized, reproducible benchmark dataset evaluating retrieval recall, answer grounding, multimodal cross-modal corroboration, and hallucination reduction across frozen Phase 1-4 RAG subsystems."
+  },
+  "queries": [
+    {
+      "query_id": "P5-Q01",
+      "category": "general_cybersecurity",
+      "query": "What are the core incident response lifecycle phases defined in NIST SP 800-61r2?",
+      "description": "Queries authoritative NIST Computer Security Incident Handling Guide documentation.",
+      "expected_modalities": [
+        "pdf"
+      ],
+      "ground_truth_evidence_ids": [
+        "PDF-NIST.SP.800-61r2"
+      ],
+      "key_reference_facts": [
+        "preparation",
+        "detection",
+        "analysis",
+        "containment",
+        "eradication",
+        "recovery",
+        "post-incident"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q02",
+      "category": "general_cybersecurity",
+      "query": "What mitigations does CISA Advisory AA23-347A recommend for securing remote access and living-off-the-land techniques?",
+      "description": "Queries CISA cybersecurity advisory on advanced persistent threat activity.",
+      "expected_modalities": [
+        "pdf"
+      ],
+      "ground_truth_evidence_ids": [
+        "PDF-cisa_advisory_aa23_347a_briefing"
+      ],
+      "key_reference_facts": [
+        "cisa",
+        "remote access",
+        "mitigation",
+        "living-off-the-land",
+        "telemetry"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q03",
+      "category": "general_cybersecurity",
+      "query": "What network flow features and packet rate thresholds identify Denial of Service (DoS) attacks in CICIDS telemetry?",
+      "description": "Queries CICIDS-2017 network intrusion flow records.",
+      "expected_modalities": [
+        "network_flow"
+      ],
+      "ground_truth_evidence_ids": [
+        "NET-cicids2017_representative_sample-00203"
+      ],
+      "key_reference_facts": [
+        "flow duration",
+        "packet rate",
+        "dos",
+        "flow bytes"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q04",
+      "category": "general_cybersecurity",
+      "query": "What Windows Security Event ID corresponds to enumeration of security-enabled local group members?",
+      "description": "Queries Windows EVTX security audit event logs.",
+      "expected_modalities": [
+        "evtx"
+      ],
+      "ground_truth_evidence_ids": [
+        "EVTX-4799_remote_local_groups_enumeration-00001"
+      ],
+      "key_reference_facts": [
+        "4799",
+        "local group",
+        "member",
+        "enumeration"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q05",
+      "category": "incident_investigation",
+      "query": "What host, process name, and command-line arguments were identified during the unauthorized execution policy bypass?",
+      "description": "Queries SOC incident briefing report and Windows host telemetry.",
+      "expected_modalities": [
+        "docx",
+        "json"
+      ],
+      "ground_truth_evidence_ids": [
+        "DOCX-soc_incident_investigation_briefing-003",
+        "PSH-psh_powershell_httplistener_2020-11-0204130683-00001"
+      ],
+      "key_reference_facts": [
+        "workstation-01",
+        "powershell.exe",
+        "-executionpolicy bypass",
+        "pid 4528"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q06",
+      "category": "incident_investigation",
+      "query": "What target image and granted access mask were recorded in Sysmon event telemetry for LSASS credential dumping?",
+      "description": "Queries Atomic Red Team Sysmon EVTX log for T1003 credential access.",
+      "expected_modalities": [
+        "evtx"
+      ],
+      "ground_truth_evidence_ids": [
+        "EVTX-T1003-1_Sysmon_CredentialDumping-00001"
+      ],
+      "key_reference_facts": [
+        "lsass.exe",
+        "0x1010",
+        "targetimage",
+        "powershell.exe"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q07",
+      "category": "incident_investigation",
+      "query": "What command-line execution and target secrets were captured in the Mordor PsExec adversary simulation log?",
+      "description": "Queries Mordor adversary simulation JSON dataset.",
+      "expected_modalities": [
+        "json"
+      ],
+      "ground_truth_evidence_ids": [
+        "MORDOR-cmd_psexec_lsa_secrets_dump_2020-10-1903305471-00001"
+      ],
+      "key_reference_facts": [
+        "psexec",
+        "lsa",
+        "secrets",
+        "dump",
+        "cmd.exe"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q08",
+      "category": "incident_investigation",
+      "query": "What registry or Winsock catalog alterations were captured in the persistence telemetry event?",
+      "description": "Queries persistence Winsock catalog alteration EVTX event.",
+      "expected_modalities": [
+        "evtx"
+      ],
+      "ground_truth_evidence_ids": [
+        "EVTX-Persistence_Winsock_Catalog_Change_EventId_1-00001"
+      ],
+      "key_reference_facts": [
+        "winsock",
+        "catalog",
+        "persistence",
+        "eventid 1"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q09",
+      "category": "attck_cve_knowledge",
+      "query": "What is the vulnerability description, CVSS base score, and CWE classification for Log4Shell CVE-2021-44228?",
+      "description": "Queries authoritative NVD vulnerability database record.",
+      "expected_modalities": [
+        "nvd_cve"
+      ],
+      "ground_truth_evidence_ids": [
+        "CVE-CVE_2021_44228"
+      ],
+      "key_reference_facts": [
+        "cve-2021-44228",
+        "10.0",
+        "jndi",
+        "log4j",
+        "remote code execution"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q10",
+      "category": "attck_cve_knowledge",
+      "query": "What MITRE ATT&CK technique ID and sub-technique define Command and Scripting Interpreter: PowerShell?",
+      "description": "Queries MITRE ATT&CK enterprise knowledge base for PowerShell execution.",
+      "expected_modalities": [
+        "mitre_attack"
+      ],
+      "ground_truth_evidence_ids": [
+        "ATTCK-T1059_001"
+      ],
+      "key_reference_facts": [
+        "t1059.001",
+        "powershell",
+        "execution",
+        "scripting"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q11",
+      "category": "attck_cve_knowledge",
+      "query": "What MITRE ATT&CK technique ID corresponds to OS Credential Dumping: LSASS Memory?",
+      "description": "Queries MITRE ATT&CK enterprise knowledge base for credential access.",
+      "expected_modalities": [
+        "mitre_attack"
+      ],
+      "ground_truth_evidence_ids": [
+        "ATTCK-T1003_001",
+        "ATTCK-T1003"
+      ],
+      "key_reference_facts": [
+        "t1003.001",
+        "t1003",
+        "lsass",
+        "credential dumping"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q12",
+      "category": "attck_cve_knowledge",
+      "query": "What technique ID and description define Credential Stuffing in the MITRE ATT&CK knowledge base?",
+      "description": "Queries MITRE ATT&CK technique T1110.004.",
+      "expected_modalities": [
+        "mitre_attack"
+      ],
+      "ground_truth_evidence_ids": [
+        "ATTCK-T1110_004"
+      ],
+      "key_reference_facts": [
+        "t1110.004",
+        "credential stuffing",
+        "login",
+        "password"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q13",
+      "category": "visual_evidence",
+      "query": "Show terminal screenshot and visual command line proof of Mimikatz privilege::debug and logonpasswords execution.",
+      "description": "Targets visual terminal screenshot evidence artifact.",
+      "expected_modalities": [
+        "image_screenshot"
+      ],
+      "ground_truth_evidence_ids": [
+        "IMG-terminal_credential_access_mimikatz"
+      ],
+      "key_reference_facts": [
+        "privilege::debug",
+        "sekurlsa::logonpasswords",
+        "mimikatz",
+        "terminal"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": true
+    },
+    {
+      "query_id": "P5-Q14",
+      "category": "visual_evidence",
+      "query": "What visual SIEM alert notification displays execution policy bypass detection with Critical severity?",
+      "description": "Targets visual SIEM alert screenshot artifact.",
+      "expected_modalities": [
+        "image_screenshot"
+      ],
+      "ground_truth_evidence_ids": [
+        "IMG-siem_alert_powershell_execution"
+      ],
+      "key_reference_facts": [
+        "siem alert",
+        "critical",
+        "powershell",
+        "executionpolicy bypass"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": true
+    },
+    {
+      "query_id": "P5-Q15",
+      "category": "visual_evidence",
+      "query": "What does the incident attack flow diagram illustrate regarding adversary lateral movement and C2 infrastructure?",
+      "description": "Targets architecture attack flow diagram image artifact.",
+      "expected_modalities": [
+        "image_diagram"
+      ],
+      "ground_truth_evidence_ids": [
+        "IMG-incident_attack_flow_diagram"
+      ],
+      "key_reference_facts": [
+        "attack flow",
+        "lateral movement",
+        "c2",
+        "diagram"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": true
+    },
+    {
+      "query_id": "P5-Q16",
+      "category": "visual_evidence",
+      "query": "What indicators of compromise, file hashes, and ATT&CK mappings are displayed in the visual threat intel IOC table?",
+      "description": "Targets visual threat intel IOC matrix image table artifact.",
+      "expected_modalities": [
+        "image_table"
+      ],
+      "ground_truth_evidence_ids": [
+        "IMG-visual_threat_intel_ioc_table"
+      ],
+      "key_reference_facts": [
+        "ioc",
+        "table",
+        "hash",
+        "threat intelligence"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": true
+    },
+    {
+      "query_id": "P5-Q17",
+      "category": "cross_modal_corroboration",
+      "query": "Corroborate host WORKSTATION-01 PowerShell bypass telemetry with visual SIEM console alert notifications.",
+      "description": "Requires fusing text telemetry (DOCX/Mordor) with visual SIEM alert screenshot.",
+      "expected_modalities": [
+        "docx",
+        "image_screenshot"
+      ],
+      "ground_truth_evidence_ids": [
+        "DOCX-soc_incident_investigation_briefing-003",
+        "IMG-siem_alert_powershell_execution",
+        "ATTCK-T1059_001"
+      ],
+      "key_reference_facts": [
+        "workstation-01",
+        "powershell",
+        "siem alert",
+        "bypass",
+        "t1059.001"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": true
+    },
+    {
+      "query_id": "P5-Q18",
+      "category": "cross_modal_corroboration",
+      "query": "Cross-reference Mordor PsExec secrets dump event logs with interactive Mimikatz terminal screenshot evidence.",
+      "description": "Requires fusing JSON Mordor logs with visual Mimikatz screenshot.",
+      "expected_modalities": [
+        "json",
+        "image_screenshot",
+        "mitre_attack"
+      ],
+      "ground_truth_evidence_ids": [
+        "MORDOR-cmd_psexec_lsa_secrets_dump_2020-10-1903305471-00001",
+        "IMG-terminal_credential_access_mimikatz",
+        "ATTCK-T1003_001"
+      ],
+      "key_reference_facts": [
+        "psexec",
+        "mimikatz",
+        "sekurlsa",
+        "lsa",
+        "terminal"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": true
+    },
+    {
+      "query_id": "P5-Q19",
+      "category": "cross_modal_corroboration",
+      "query": "Reconcile network C2 HTTP beaconing flow data with adversary kill-chain progression shown in attack flow diagram.",
+      "description": "Fuses network/Mordor HTTP telemetry with visual architecture diagram.",
+      "expected_modalities": [
+        "json",
+        "image_diagram"
+      ],
+      "ground_truth_evidence_ids": [
+        "PSH-psh_powershell_httplistener_2020-11-0204130683-00001",
+        "IMG-incident_attack_flow_diagram"
+      ],
+      "key_reference_facts": [
+        "httplistener",
+        "beaconing",
+        "attack flow",
+        "diagram"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": true
+    },
+    {
+      "query_id": "P5-Q20",
+      "category": "cross_modal_corroboration",
+      "query": "Verify forensic indicators in the SOC investigation briefing document against the visual IOC threat matrix table.",
+      "description": "Fuses structured DOCX briefing tables with visual IOC table screenshot.",
+      "expected_modalities": [
+        "docx",
+        "image_table"
+      ],
+      "ground_truth_evidence_ids": [
+        "DOCX-TBL-soc_incident_investigation_briefing-001",
+        "IMG-visual_threat_intel_ioc_table"
+      ],
+      "key_reference_facts": [
+        "ioc",
+        "soc briefing",
+        "table",
+        "indicators"
+      ],
+      "expected_grounding_status": "SUPPORTED",
+      "is_visual_dependent": true
+    },
+    {
+      "query_id": "P5-Q21",
+      "category": "adversarial_unsupported",
+      "query": "What evidence proves the attack was executed on an Ubuntu Linux server using Bash scripts by Lazarus Group?",
+      "description": "Contradicts observed Windows PowerShell telemetry and unobserved actor attribution.",
+      "expected_modalities": [
+        "docx",
+        "evtx"
+      ],
+      "ground_truth_evidence_ids": [
+        "DOCX-soc_incident_investigation_briefing-003",
+        "EVTX-T1003-1_Sysmon_CredentialDumping-00001"
+      ],
+      "key_reference_facts": [
+        "contradiction",
+        "windows",
+        "powershell",
+        "not linux"
+      ],
+      "expected_grounding_status": "CONTRADICTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q22",
+      "category": "adversarial_unsupported",
+      "query": "What sensitive databases and customer credit cards were decrypted from Google Chrome browser SQLite databases?",
+      "description": "Ungrounded hallucination query with zero evidence basis in forensic logs.",
+      "expected_modalities": [
+        "mitre_attack"
+      ],
+      "ground_truth_evidence_ids": [
+        "ATTCK-T1003"
+      ],
+      "key_reference_facts": [
+        "unsupported",
+        "no evidence",
+        "unconfirmed"
+      ],
+      "expected_grounding_status": "UNSUPPORTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q23",
+      "category": "adversarial_unsupported",
+      "query": "What zero-day vulnerability CVE-2024-99999 was exploited to decrypt AES-256 encrypted drives?",
+      "description": "Fictitious CVE and unobserved disk encryption activity.",
+      "expected_modalities": [
+        "nvd_cve"
+      ],
+      "ground_truth_evidence_ids": [
+        "CVE-CVE_2021_44228"
+      ],
+      "key_reference_facts": [
+        "unsupported",
+        "nonexistent",
+        "insufficient"
+      ],
+      "expected_grounding_status": "UNSUPPORTED",
+      "is_visual_dependent": false
+    },
+    {
+      "query_id": "P5-Q24",
+      "category": "adversarial_unsupported",
+      "query": "Is there definitive attribution confirming the Log4Shell CVE-2021-44228 incident was directed by Cozy Bear APT29?",
+      "description": "Attribution assertion exceeding the technical scope of the NVD vulnerability advisory.",
+      "expected_modalities": [
+        "nvd_cve"
+      ],
+      "ground_truth_evidence_ids": [
+        "CVE-CVE_2021_44228"
+      ],
+      "key_reference_facts": [
+        "insufficient",
+        "unconfirmed attribution",
+        "cve-2021-44228"
+      ],
+      "expected_grounding_status": "INSUFFICIENT_EVIDENCE",
+      "is_visual_dependent": false
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+Ablation_Setting,N,Recall@5,MRR,Grounding_Score,Hallucination_Rate,Answer_Accuracy,Total_Latency_ms
+D_Full_System,24,0.6042,0.6354,0.3167,0.2500,0.6065,27.0
+Ablation_WO_Visual,24,0.6042,0.6354,0.3167,0.2500,0.6065,14.3
+Ablation_WO_Fusion,24,0.8681,0.6903,0.3292,0.2917,0.6169,26.1
+Ablation_WO_Verification,24,0.6042,0.6354,0.6500,0.2500,0.5923,26.4
+Ablation_WO_KnowledgeBase,24,0.5208,0.5583,0.2104,0.4375,0.6273,26.1

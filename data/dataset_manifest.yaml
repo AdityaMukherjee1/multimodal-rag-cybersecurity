@@ -1,0 +1,185 @@
+# ==============================================================================
+# CyberAI-Investigator Research Dataset Manifest
+# Evidence-Grounded Multimodal RAG for Cybersecurity Incident Investigation
+# ==============================================================================
+
+version: "1.0.0"
+last_updated: "2026-09-03"
+
+datasets:
+  atomic_evtx:
+    purpose: "Windows host evidence (Sysmon & Security event logs)"
+    authoritative_sources:
+      - name: "EVTX-ATTACK-SAMPLES (Samir Bousseaden)"
+        url: "https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES"
+        license: "MIT License"
+      - name: "Atomic-EVTX (Arda Buyukkaya / ArXiv 2403.04838)"
+        url: "https://github.com/arniki/atomic-evtx"
+        license: "Apache 2.0 / MIT"
+    download_date: "2026-09-03"
+    storage_path: "data/raw/atomic_evtx"
+    files:
+      - name: "Exec_sysmon_meterpreter_reversetcp_msipackage.evtx"
+        size_bytes: 69632
+        modality: "evtx"
+        event_types: ["Sysmon Event ID 1 (Process Creation)", "Sysmon Event ID 3 (Network Connection)"]
+        attck_mappings: ["T1059", "T1218"]
+      - name: "4799_remote_local_groups_enumeration.evtx"
+        size_bytes: 69632
+        modality: "evtx"
+        event_types: ["Security Event ID 4799 (Security-Enabled Local Group Member Enumeration)"]
+        attck_mappings: ["T1087.002"]
+      - name: "Persistence_Winsock_Catalog_Change_EventId_1.evtx"
+        size_bytes: 69632
+        modality: "evtx"
+        event_types: ["Sysmon Event ID 1 (Process Create: netsh / winsock change)"]
+        attck_mappings: ["T1546"]
+      - name: "CA_DCSync_4662.evtx"
+        size_bytes: 69632
+        modality: "evtx"
+        event_types: ["Security Event ID 4662 (Directory Service Access / DCSync)"]
+        attck_mappings: ["T1003.006"]
+      - name: "T1003-1_Sysmon_CredentialDumping.evtx"
+        size_bytes: 69632
+        modality: "evtx"
+        event_types: ["Sysmon Event ID 10 (ProcessAccess to LSASS)"]
+        attck_mappings: ["T1003.001"]
+      - name: "T1003-1_metadata.csv"
+        size_bytes: 325
+        modality: "csv"
+        event_types: ["Atomic test metadata"]
+        attck_mappings: ["T1003.001"]
+
+  mordor:
+    purpose: "ATT&CK-aligned simulated adversary security events"
+    authoritative_sources:
+      - name: "OTRF Security-Datasets / Mordor Project (Roberto Rodriguez, Jose Luis Rodriguez)"
+        url: "https://github.com/OTRF/Security-Datasets"
+        website: "https://securitydatasets.com"
+        license: "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)"
+    download_date: "2026-09-03"
+    storage_path: "data/raw/mordor"
+    files:
+      - name: "psh_powershell_httplistener_2020-11-0204130683.json"
+        archive: "psh_powershell_httplistener.zip"
+        modality: "json"
+        format: "ndjson"
+        tactic: "Execution"
+        attck_mappings: ["T1059.001"]
+      - name: "cmd_psexec_lsa_secrets_dump_2020-10-1903305471.json"
+        archive: "cmd_psexec_lsa_secrets_dump.zip"
+        modality: "json"
+        format: "ndjson"
+        tactic: "Credential Access / Execution"
+        attck_mappings: ["T1003", "T1569.002"]
+      - name: "cmd_seatbelt_group_user_2020-11-0216391814.json"
+        archive: "cmd_seatbelt_group_user.zip"
+        modality: "json"
+        format: "ndjson"
+        tactic: "Discovery"
+        attck_mappings: ["T1087", "T1069"]
+
+  cic_ids2017:
+    purpose: "Network intrusion telemetry and flow evidence"
+    authoritative_sources:
+      - name: "Canadian Institute for Cybersecurity (CIC), University of New Brunswick (UNB)"
+        url: "https://www.unb.ca/cic/datasets/ids-2017.html"
+        license: "Open Academic Research Use"
+      - name: "Western University OC2 Lab (Prof. Abdallah Shami)"
+        url: "https://github.com/Western-OC2-Lab/Intrusion-Detection-System-Using-Machine-Learning"
+        license: "MIT License"
+    download_date: "2026-09-03"
+    storage_path: "data/raw/cic_ids2017"
+    files:
+      - name: "cicids2017_representative_sample.csv"
+        size_bytes: 1179327
+        rows: 3001
+        columns: 78
+        modality: "network_flow"
+        classes: ["BENIGN", "DoS", "PortScan", "DDoS"]
+        primary_features:
+          - "Flow Duration"
+          - "Total Fwd Packets"
+          - "Total Backward Packets"
+          - "Flow Bytes/s"
+          - "Flow Packets/s"
+          - "Destination Port"
+          - "SYN / ACK / FIN / RST Flag Counts"
+
+  mitre_attack:
+    purpose: "Official machine-readable cybersecurity threat knowledge"
+    authoritative_sources:
+      - name: "MITRE Corporation & Center for Threat-Informed Defense"
+        url: "https://github.com/mitre-attack/attack-stix-data"
+        license: "Apache License 2.0"
+    download_date: "2026-09-03"
+    storage_path: "data/raw/mitre_attack"
+    files:
+      - name: "enterprise-attack.json"
+        size_bytes: 53835637
+        format: "STIX 2.1 JSON"
+        modality: "mitre_attack"
+        scope:
+          - "Attack Tactics"
+          - "Techniques & Sub-techniques"
+          - "Adversary Groups & Campaigns"
+          - "Software & Malware Profiles"
+          - "Mitigations & Data Sources"
+
+  nvd:
+    purpose: "Vulnerability knowledge and CVSS severity metrics"
+    authoritative_sources:
+      - name: "National Institute of Standards and Technology (NIST) NVD API 2.0"
+        url: "https://services.nvd.nist.gov/rest/json/cves/2.0"
+        license: "U.S. Government Work / Public Domain"
+    download_date: "2026-09-03"
+    storage_path: "data/raw/nvd"
+    files:
+      - name: "nvd_cve_sample.json"
+        format: "NVD_CVE_JSON_2.0"
+        modality: "nvd_cve"
+        cves_included:
+          - "CVE-2021-44228 (Log4Shell - CVSS 10.0)"
+          - "CVE-2017-0144 (EternalBlue - CVSS 8.1)"
+          - "CVE-2021-34527 (PrintNightmare - CVSS 8.8)"
+          - "CVE-2021-26855 (ProxyLogon - CVSS 9.8)"
+          - "CVE-2022-30190 (Follina - CVSS 7.8)"
+          - "CVE-2023-34362 (MOVEit SQLi - CVSS 9.8)"
+          - "CVE-2023-4966 (Citrix Bleed - CVSS 9.4)"
+
+  multimodal_documents:
+    purpose: "Unstructured and semi-structured incident reports and advisories"
+    storage_path: "data/raw/documents"
+    files:
+      - name: "pdf/NIST.SP.800-61r2.pdf"
+        size_bytes: 1744473
+        pages: 80
+        modality: "pdf"
+        source: "NIST Special Publication 800-61 Rev. 2: Computer Security Incident Handling Guide"
+      - name: "pdf/cisa_advisory_aa23_347a_briefing.pdf"
+        modality: "pdf"
+        source: "CISA / FBI / NSA Joint Advisory AA23-347A: Russian SVR Exploitation of TeamCity"
+      - name: "docx/soc_incident_investigation_briefing.docx"
+        modality: "docx"
+        source: "SOC Incident Investigation Briefing with structured IOC Matrix table"
+
+  multimodal_images:
+    purpose: "Visual evidence for cross-modal incident correlation"
+    storage_path: "data/raw/images"
+    files:
+      - name: "screenshots/siem_alert_powershell_execution.png"
+        dimensions: "900x480"
+        modality: "image_screenshot"
+        description: "Elastic Security SIEM alert for anomalous PowerShell execution with bypass flags"
+      - name: "screenshots/terminal_credential_access_mimikatz.png"
+        dimensions: "850x420"
+        modality: "image_screenshot"
+        description: "Terminal execution capture of Mimikatz sekurlsa::logonpasswords"
+      - name: "diagrams/incident_attack_flow_diagram.png"
+        dimensions: "960x540"
+        modality: "image_diagram"
+        description: "Attack architecture flowchart from TeamCity initial access to C2 callback"
+      - name: "tables/visual_threat_intel_ioc_table.png"
+        dimensions: "900x440"
+        modality: "image_table"
+        description: "Visual indicator of compromise (IOC) matrix rendered as an image table"

